@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React from 'react';
 import { Navbar, NavbarBrand, NavbarNav, NavbarToggler, Collapse, NavItem, NavLink, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'mdbreact';
 import { BrowserRouter as Router } from 'react-router-dom';
+import logo from "../../university-logo.svg";
 
-
-class Home extends Component {
-  constructor(props) {
+class Home extends React.Component {
+    constructor(props) {
         super(props);
         this.state = {
             collapse: false,
@@ -26,60 +26,46 @@ class Home extends Component {
             dropdownOpen: !this.state.dropdownOpen
         });
     }
-  render() {
-    return (
-      <div>
-       <Router>
-                <Navbar color="indigo" dark expand="md" scrolling>
-                    <NavbarBrand href="/">
-                        <strong>Navbar</strong>
+
+    render() {
+        return (
+            <Router>
+                <Navbar color="#1a237e indigo darken-4" dark expand="md" scrolling>
+                    <NavbarBrand href="#">
+                        <img src={logo} height="100" alt="logo"/>
                     </NavbarBrand>
                     { !this.state.isWideEnough && <NavbarToggler onClick = { this.onClick } />}
                     <Collapse isOpen = { this.state.collapse } navbar>
-                        <NavbarNav left>
+                        <NavbarNav right>
                           <NavItem active>
-                              <NavLink to="#">Home</NavLink>
+                              <NavLink to="#">Login</NavLink>
                           </NavItem>
                           <NavItem>
-                              <NavLink to="#">Features</NavLink>
-                          </NavItem>
-                          <NavItem>
-                              <NavLink to="#">Pricing</NavLink>
+                              <NavLink to="#">News</NavLink>
                           </NavItem>
                           <NavItem>
                               <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-                              <DropdownToggle nav caret>Dropdown</DropdownToggle>
+                              <DropdownToggle nav caret>Events</DropdownToggle>
                               <DropdownMenu>
-                                  <DropdownItem href="#">Action</DropdownItem>
-                                  <DropdownItem href="#">Another Action</DropdownItem>
-                                  <DropdownItem href="#">Something else here</DropdownItem>
-                                  <DropdownItem href="#">Something else here</DropdownItem>
+                                  <DropdownItem href="#">Interview Prep</DropdownItem>
+                                  <DropdownItem href="#">Networking</DropdownItem>
+                                  <DropdownItem href="#">Fun</DropdownItem>
                               </DropdownMenu>
                               </Dropdown>
                           </NavItem>
                         </NavbarNav>
-                        <NavbarNav right>
+                        {/* <NavbarNav right>
                           <NavItem>
                             <form className="form-inline md-form mt-0">
                               <input className="form-control mr-sm-2 mb-0 text-white" type="text" placeholder="Search" aria-label="Search"/>
                             </form>
                           </NavItem>
-                        </NavbarNav>
+                        </NavbarNav> */}
                     </Collapse>
                 </Navbar>
             </Router>
-        
-        <div className="col-md-8">
-            <h1>Welcome</h1>
-        </div>
-        <div className="col-md-4">
-          
-        </div>
-                
-      </div>
-
-    );
-  }
+        );
+    }
 }
 
 export default Home;
